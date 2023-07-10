@@ -16,7 +16,6 @@ const ContactRouter = require("./Router/contact_router.js");
 const GeocodeRouter = require("./Router/geocode_router.js");
 const UserRouter = require("./Router/user_router.js"); 
 
-// white listed domain. Only the white listed domain can access the public api.
 var whitelist = ["http://localhost:3000", "https://makemylisting.com.au"];
 // cors option
 var corsOptions = {
@@ -56,6 +55,7 @@ app.get('/api/jwt', async (req, res) => {
 });
 
 // Middleware
+app.use("/api",UserRouter);
 app.use("/api/v1/blogs", BlogRouter);
 app.use("/api/v1/business-sub-category", BusinessSubCategoryRouter);
 app.use(ListBusinessRouter);
@@ -63,7 +63,6 @@ app.use(AllStaticContentRouter);
 app.use(BusinessCategoryRouter);
 app.use(ContactRouter);
 app.use(GeocodeRouter);
-app.use(UserRouter);
 
 // root route
 app.use("/", (req, res) => {
