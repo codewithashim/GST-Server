@@ -1,20 +1,20 @@
 const express = require("express");
 const cors = require("cors");
 require("dotenv").config();
-const appRoute = require("./Router/user.router.js");
 const supabase = require("./config/supabase.js");
 const jwt = require("jsonwebtoken");
-const ContactRouter = require("./router/contact.router");
 let app = express();
 const PORT = process.env.PORT || 8080;
 
-// import all router
-const blogs = require("./router/blogs_router_v1.js");
-const listBusiness = require("./router/list_business_v1");
-const allStaticContent = require("./router/all_static_content.js");
-const business_category = require("./router/business_category_v1.js");
-const business_sub_category = require("./Router/business_sub_category_v1")
-const geocode = require("./router/geocode.router.js")
+// Import All Router
+const BlogRouter = require("./Router/blogs_router_v1.js");
+const ListBusinessRouter = require("./Router/list_business_v1.js");
+const AllStaticContentRouter = require("./Router/all_static_content.js");
+const BusinessCategoryRouter = require("./Router/business_category_v1.js");
+const BusinessSubCategoryRouter = require("./Router/business_sub_category_v1.js");
+const ContactRouter = require("./Router/contact_router.js");
+const GeocodeRouter = require("./Router/geocode_router.js");
+const UserRouter = require("./Router/user_router.js"); 
 
 // white listed domain. Only the white listed domain can access the public api.
 var whitelist = ["http://localhost:3000", "https://makemylisting.com.au"];
@@ -55,16 +55,15 @@ app.get('/api/jwt', async (req, res) => {
   res.status(403).send({ accessToken: '' });
 });
 
-/** routes */
-app.use("/api", appRoute);
-app.use("/api/v1/blogs", blogs);
-app.use(listBusiness);
-app.use(allStaticContent);
-app.use(business_category);
-app.use("/api/v1/business-sub-category", business_sub_category)
+// Middleware
+app.use("/api/v1/blogs", BlogRouter);
+app.use("/api/v1/business-sub-category", BusinessSubCategoryRouter);
+app.use(ListBusinessRouter);
+app.use(AllStaticContentRouter);
+app.use(BusinessCategoryRouter);
 app.use(ContactRouter);
-app.use(geocode)
-
+app.use(GeocodeRouter);
+app.use(UserRouter);
 
 // root route
 app.use("/", (req, res) => {

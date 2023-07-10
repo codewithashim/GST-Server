@@ -6,11 +6,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon index.js",
-    "build": "npm run build",
-    "build:prod": "npm run build:prod",
-    "build:dev": "npm run build:dev",
-    "build:test": "npm run build:test",
-    "build:coverage": "npm run build:coverage"
+    "build": "node index.js",
+    "build:dev": "npm run build",
+    "build:test": "npm run build",
+    "build:coverage": "npm run build"
   },
   "keywords": [],
   "author": "",

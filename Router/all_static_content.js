@@ -1,9 +1,10 @@
+const express = require('express');
+const router = express.Router();
 const {
   updateSpecificContent,
   getSpecificContent,
 } = require("../controller/all_static_content/all_static_content");
 
-const router = require("express").Router();
 
 /**
  *@api{get} / update content value

@@ -1,9 +1,9 @@
+const express = require('express');
+const router = express.Router();
 const {
     createContact,
     getContact
 } = require("../controller/contact/contact.controller");
-
-const router = require("express").Router();
 
 /**
  * @api {post} /api/v1/contact/create create contact
@@ -34,8 +34,5 @@ router.post("/api/v1/contact/create", createContact);
  */
 
 router.get("/api/v1/contact/get", getContact);
-
-
-
 
 module.exports = router;

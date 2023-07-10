@@ -1,3 +1,5 @@
+const express = require('express');
+const router = express.Router();
 const { getBusinessSubCategoryById, 
     getBusinessSubCategorySearchByTitle, 
     getSubCategoryForManageCategory, 
@@ -6,8 +8,6 @@ const { getBusinessSubCategoryById,
     updateSubCategory, 
     deleteSubCategory 
 } = require("../controller/business_sub_category/business_sub_category");
-
-const router = require("express").Router();
 
 /**
  *@api{get} / get business-sub-category

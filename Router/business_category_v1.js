@@ -1,11 +1,11 @@
+const express = require('express');
+const router = express.Router();
 const {
   getAllBusinessCategory,
   getBusinessCategoryByTitle,
   getBusinessCategoryById,
   getBusinessCategorySearchByTitle,
 } = require("../controller/business_category/business_category");
-
-const router = require("express").Router();
 
 /**
  *@api{get} / get business-category
